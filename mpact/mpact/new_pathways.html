@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" action="">
+        {{ pathway_form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{legend}}</legend>
+            <div class="form-group">
+                {{ pathway_form.precursor.label(class="form-control-label") }}
+                {% if pathway_form.precursor.errors %}
+                    {{ pathway_form.precursor(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in pathway_form.precursor.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ pathway_form.precursor(class="form-control form-control-lg") }}
+                {% endif %}
+
+                {{ pathway_form.target.label(class="form-control-label") }}
+                {% if pathway_form.target.errors %}
+                    {{ pathway_form.target(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in pathway_form.target.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ pathway_form.target(class="form-control form-control-lg") }}
+                {% endif %}
+
+    <div class="form-group">
+        {{ pathway_form.submit_pathways(class="btn btn-outline-info") }}
+    </div>
+</form>
+{% endblock content %}
